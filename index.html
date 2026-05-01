@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoterSaathi – Smart Election Assistant</title>
+    <meta name="description" content="Empowering first-time voters in India with a personalized, AI-powered election assistant.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Background Elements -->
+        <div class="bg-wrapper">
+            <div class="bg-gradient" id="bg-gradient"></div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax-waves">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(99, 102, 241, 0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(20, 184, 166, 0.2)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(245, 158, 11, 0.1)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="var(--bg-color)" />
+                </g>
+            </svg>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="navbar" id="main-nav">
+            <div class="container">
+                <a href="#" class="logo" id="nav-logo">
+                    <i class="fas fa-vote-yea"></i>
+                    <span data-i18n="logo-text">VoterSaathi</span>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#" class="active" onclick="App.showSection('onboarding')" data-i18n="nav-home">Home</a>
+                    <a href="#" onclick="App.showSection('decision-flow')" data-i18n="nav-assistant">Assistant</a>
+                    <a href="#" onclick="App.showSection('dashboard')" data-i18n="nav-dashboard">Dashboard</a>
+                    <a href="#" onclick="App.showWidget('quiz'); App.showSection('dashboard')" data-i18n="nav-learning">Learning</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button id="lang-toggle" class="btn-icon" title="Toggle Language">
+                        <i class="fas fa-language"></i>
+                        <span id="current-lang" style="font-size: 0.7rem; font-weight: 700; margin-left: 2px;">HI</span>
+                    </button>
+                    <button id="theme-toggle" class="btn-icon" title="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Hero Section -->
+            <section id="onboarding" class="section active hero">
+                <div class="container hero-grid">
+                    <div class="hero-text">
+                        <h1 data-i18n="hero-title">Your Voice,<br>Your Power.</h1>
+                        <p data-i18n="hero-subtitle">The ultimate guide for first-time voters in India. Get registered, stay informed, and make your vote count.</p>
+                        <div class="hero-actions" id="hero-initial-actions">
+                            <div class="onboarding-form glass">
+                                <div class="input-row">
+                                    <input type="text" id="user-name" placeholder="Full Name" data-i18n-placeholder="placeholder-name">
+                                    <select id="user-state" data-i18n-placeholder="placeholder-state">
+                                        <option value="" disabled selected data-i18n="select-state">Select State</option>
+                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Uttarakhand">Uttarakhand</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                        <option value="Chandigarh">Chandigarh</option>
+                                        <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Ladakh">Ladakh</option>
+                                        <option value="Lakshadweep">Lakshadweep</option>
+                                        <option value="Puducherry">Puducherry</option>
+                                    </select>
+                                </div>
+                                <div class="age-input-group">
+                                    <input type="number" id="user-age" placeholder="Age" min="1" max="120" data-i18n-placeholder="placeholder-age">
+                                    <button id="check-eligibility" class="btn btn-primary">
+                                        <span data-i18n="get-started">Get Started</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="eligibility-result" style="margin-top: 2rem;"></div>
+                    </div>
+
+                </div>
+
+                <div class="container" id="education-info" style="display: none; margin-top: 6rem; animation: fadeIn 0.8s;">
+                    <div class="card glass" style="padding: 4rem; text-align: left;">
+                        <h2 style="margin-bottom: 2rem;"><i class="fas fa-graduation-cap" style="color: var(--primary);"></i> <span data-i18n="why-voting-title">Why Voting Matters</span></h2>
+                        <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                            <div>
+                                <h4 style="color: var(--primary); margin-bottom: 1rem;" data-i18n="reason-1-title">1. Shape the Future</h4>
+                                <p style="color: var(--text-muted);" data-i18n="reason-1-desc">Decisions made today affect your education, environment, and career tomorrow.</p>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--primary); margin-bottom: 1rem;" data-i18n="reason-2-title">2. Equality for All</h4>
+                                <p style="color: var(--text-muted);" data-i18n="reason-2-desc">Every vote has the same value, regardless of background or wealth.</p>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--primary); margin-bottom: 1rem;" data-i18n="reason-3-title">3. Be the Change</h4>
+                                <p style="color: var(--text-muted);" data-i18n="reason-3-desc">Voting is the most powerful way to express your opinion on how the country is run.</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                            <p><strong data-i18n="note-label">Note:</strong> <span data-i18n="note-desc">You can register to vote as soon as you turn 18. Keep this guide bookmarked!</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container" id="features" style="margin-top: 8rem;">
+                    <div style="text-align: center; margin-bottom: 4rem;">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;" data-i18n="steps-title">Simple Steps to Vote</h2>
+                        <p style="color: var(--text-muted); font-size: 1.1rem;" data-i18n="steps-subtitle">Everything you need to navigate the democratic process.</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="card glass feature-card">
+                            <i class="fas fa-user-check"></i>
+                            <h3 data-i18n="step-register-title">Register</h3>
+                            <p style="color: var(--text-muted);" data-i18n="step-register-desc">New to the electoral roll? Complete your Form 6 registration in minutes.</p>
+                            <button class="btn btn-outline btn-sm" onclick="App.showSection('decision-flow')" data-i18n="step-register-btn">Start Registration</button>
+                        </div>
+                        <div class="card glass feature-card">
+                            <i class="fas fa-id-card"></i>
+                            <h3 data-i18n="step-id-title">Verify ID</h3>
+                            <p style="color: var(--text-muted);" data-i18n="step-id-desc">Check your Voter ID status or apply for corrections effortlessly.</p>
+                            <button class="btn btn-outline btn-sm" onclick="App.showSection('decision-flow')" data-i18n="step-id-btn">Check Status</button>
+                        </div>
+                        <div class="card glass feature-card">
+                            <i class="fas fa-vote-yea"></i>
+                            <h3 data-i18n="step-vote-title">Go Vote</h3>
+                            <p style="color: var(--text-muted);" data-i18n="step-vote-desc">Find your polling station and prepare for the big day with our checklist.</p>
+                            <button class="btn btn-outline btn-sm" onclick="App.showWidget('timeline'); App.showSection('dashboard')" data-i18n="step-vote-btn">View Timeline</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Decision Flow Section (Guided Journey) -->
+            <section id="decision-flow" class="section">
+                <div class="container">
+                    <div class="glass" style="padding: 4rem; max-width: 900px; margin: 0 auto; text-align: center;">
+                        <div id="flow-progress-container" style="margin-bottom: 3rem;">
+                            <div class="progress-container" style="max-width: 100%;">
+                                <div class="progress-bar-fill" id="flow-progress-fill"></div>
+                            </div>
+                        </div>
+                        <div id="flow-content">
+                            <!-- Dynamic Content -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section">
+                <div class="container">
+                    <div class="dashboard-grid">
+                        <aside class="dashboard-sidebar">
+                            <div class="card glass">
+                                <h3 style="margin-bottom: 2rem;" data-i18n="voter-status">Your Journey</h3>
+                                <div id="progress-tracker"></div>
+                                
+                                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;" data-i18n="voter-badge-label">Voter Badge</p>
+                                    <div id="user-badge" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(99, 102, 241, 0.1); border-radius: var(--radius-md);">
+                                        <i class="fas fa-award" style="color: var(--accent); font-size: 2rem;"></i>
+                                        <div>
+                                            <span id="badge-name" style="font-weight: 800; display: block;" data-i18n="badge-beginner">Beginner</span>
+                                            <small style="font-size: 0.75rem; color: var(--text-muted);" data-i18n="badge-desc">Keep learning to level up!</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <div class="dashboard-main">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+                                <div class="card glass interactive-card" id="nav-quiz">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <div>
+                                        <h4 data-i18n="learning-title" style="margin-bottom: 0.5rem;">Quiz Mode</h4>
+                                        <p style="font-size: 0.9rem; color: var(--text-muted);" data-i18n="learning-desc">Test your civics knowledge.</p>
+                                    </div>
+                                </div>
+                                <div class="card glass interactive-card" id="nav-timeline">
+                                    <i class="fas fa-calendar-check"></i>
+                                    <div>
+                                        <h4 data-i18n="timeline-title" style="margin-bottom: 0.5rem;">Timeline</h4>
+                                        <p style="font-size: 0.9rem; color: var(--text-muted);" data-i18n="timeline-desc">Important election dates.</p>
+                                    </div>
+                                </div>
+                                <div class="card glass interactive-card" id="nav-fact-check">
+                                    <i class="fas fa-shield-check"></i>
+                                    <div>
+                                        <h4 data-i18n="fact-check-title" style="margin-bottom: 0.5rem;">Fact Check</h4>
+                                        <p style="font-size: 0.9rem; color: var(--text-muted);" data-i18n="fact-check-desc">Verify election news.</p>
+                                    </div>
+                                </div>
+                                <div class="card glass interactive-card" id="nav-simulation" style="border-color: var(--secondary);">
+                                    <i class="fas fa-booth-curtain" style="background: linear-gradient(135deg, var(--secondary), var(--primary)); -webkit-background-clip: text;"></i>
+                                    <div>
+                                        <h4 style="margin-bottom: 0.5rem;" data-i18n="simulation-title">Booth Sim</h4>
+                                        <p style="font-size: 0.9rem; color: var(--text-muted);" data-i18n="simulation-desc">Virtual voting experience.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="active-widget" class="widget-container">
+                                <!-- Default Widget or Active Widget -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Chatbot Button -->
+        <button id="chatbot-toggle" class="btn-floating" title="Ask Assistant">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+
+        <!-- Chatbot Modal -->
+        <div id="chatbot-modal" class="chatbot-modal glass">
+            <div class="chat-header">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="assets/bot-avatar.png" alt="Bot" style="width: 35px; height: 35px; border-radius: 50%; background: white; padding: 2px;">
+                    <h3 style="font-size: 1.1rem;" data-i18n="ai-assistant">Assistant</h3>
+                </div>
+                <button class="close-modal btn-icon" style="background: transparent; border: none; color: white;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-body" id="chat-messages">
+                <div class="message bot">
+                    <p data-i18n="bot-welcome">Namaste! I'm VoterSaathi. How can I help you navigate the voting process today?</p>
+                </div>
+            </div>
+            <div class="chat-footer" style="padding: 1.5rem; background: var(--card-bg); border-top: 1px solid var(--border-color); display: flex; gap: 1rem; align-items: center;">
+                <input type="text" id="chat-input" placeholder="Ask a question..." data-i18n-placeholder="ask-placeholder" style="flex: 1; padding: 0.875rem 1.25rem; border-radius: 1.5rem; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); font-family: inherit;">
+                <button id="voice-input" class="btn-icon" style="width: 40px; height: 40px;"><i class="fas fa-microphone"></i></button>
+                <button id="send-message" class="btn btn-primary" style="width: 45px; height: 45px; border-radius: 50%; padding: 0;"><i class="fas fa-paper-plane" style="margin-left: 2px;"></i></button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="components/decisionFlow.js"></script>
+    <script src="components/votingSimulation.js"></script>
+    <script src="components/chatbot.js"></script>
+    <script src="components/quiz.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
